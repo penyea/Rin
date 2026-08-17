@@ -1,76 +1,129 @@
+<!DOCTYPE html>
+<html>
+
 <head>
 
 <meta charset="UTF-8">
 
-<script src="https://acscdn.com/script/aclib.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+<title>Test</title>
+
 
 </head>
 
 
 <body>
 
-<!-- Adcash Safe Load Start -->
+
+<h1>Hello Test</h1>
+
+
+
+<!-- Adcash -->
 <script>
+
 (function(){
 
-    function loadAdcash(){
+    var loaded = false;
 
-        var script = document.createElement("script");
 
-        script.src = "https://acscdn.com/script/aclib.js";
+    function startAdcash(){
 
-        script.async = true;
 
-        script.onload = function(){
+        if(loaded){
+            return;
+        }
 
-            try {
 
-                if(window.aclib){
+        loaded = true;
 
-                    aclib.runAutoTag({
-                        zoneId: "ydqubl9osj"
+
+        var s = document.createElement("script");
+
+
+        s.src = "https://acscdn.com/script/aclib.js";
+
+
+        s.async = true;
+
+
+        s.onload = function(){
+
+
+            try{
+
+
+                if(
+                    typeof window.aclib !== "undefined" &&
+                    typeof window.aclib.runAutoTag === "function"
+                ){
+
+                    window.aclib.runAutoTag({
+
+                        zoneId:"ydqubl9osj"
+
                     });
 
                 }
 
-            } catch(e){
 
-                console.log("Adcash disabled:", e);
+            }catch(err){
+
+
+                console.log(
+                    "Adcash Error:",
+                    err
+                );
+
 
             }
 
-        };
-
-
-        script.onerror = function(){
-
-            console.log("Adcash load failed");
 
         };
 
 
-        document.head.appendChild(script);
+        s.onerror=function(){
+
+            console.log(
+                "Adcash Script Load Failed"
+            );
+
+        };
+
+
+        document.body.appendChild(s);
+
 
     }
 
 
-    if(document.readyState === "complete"){
 
-        loadAdcash();
+    if(
+        document.readyState === "complete"
+    ){
+
+        startAdcash();
 
     }else{
 
+
         window.addEventListener(
             "load",
-            loadAdcash,
-            false
+            startAdcash
         );
+
 
     }
 
 
 })();
+
+
 </script>
-<!-- Adcash Safe Load End -->
+
 
 </body>
+
+</html>
