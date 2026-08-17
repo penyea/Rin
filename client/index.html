@@ -7,8 +7,12 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+<title>Adcash Test</title>
 
-<title>Test</title>
+
+<script
+src="https://acscdn.com/script/aclib.js">
+</script>
 
 
 </head>
@@ -20,105 +24,55 @@
 <h1>Hello Test</h1>
 
 
-
-<!-- Adcash -->
 <script>
 
-(function(){
-
-    var loaded = false;
+window.addEventListener("load", function(){
 
 
-    function startAdcash(){
+    try {
 
 
-        if(loaded){
-            return;
+        if(
+            window.aclib &&
+            typeof window.aclib.runAutoTag === "function"
+        ){
+
+            window.aclib.runAutoTag({
+
+                zoneId:"ydqubl9osj"
+
+            });
+
+
+            console.log(
+                "Adcash started"
+            );
+
+
+        }else{
+
+
+            console.log(
+                "aclib not ready"
+            );
+
+
         }
 
 
-        loaded = true;
+    }catch(e){
 
 
-        var s = document.createElement("script");
-
-
-        s.src = "https://acscdn.com/script/aclib.js";
-
-
-        s.async = true;
-
-
-        s.onload = function(){
-
-
-            try{
-
-
-                if(
-                    typeof window.aclib !== "undefined" &&
-                    typeof window.aclib.runAutoTag === "function"
-                ){
-
-                    window.aclib.runAutoTag({
-
-                        zoneId:"ydqubl9osj"
-
-                    });
-
-                }
-
-
-            }catch(err){
-
-
-                console.log(
-                    "Adcash Error:",
-                    err
-                );
-
-
-            }
-
-
-        };
-
-
-        s.onerror=function(){
-
-            console.log(
-                "Adcash Script Load Failed"
-            );
-
-        };
-
-
-        document.body.appendChild(s);
-
-
-    }
-
-
-
-    if(
-        document.readyState === "complete"
-    ){
-
-        startAdcash();
-
-    }else{
-
-
-        window.addEventListener(
-            "load",
-            startAdcash
+        console.log(
+            "Adcash Error:",
+            e
         );
 
 
     }
 
 
-})();
+});
 
 
 </script>
