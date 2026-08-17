@@ -7,12 +7,10 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Adcash Test</title>
+<title>Adcash Test Page</title>
 
 
-<script
-src="https://acscdn.com/script/aclib.js">
-</script>
+<script src="https://acscdn.com/script/aclib.js"></script>
 
 
 </head>
@@ -21,55 +19,64 @@ src="https://acscdn.com/script/aclib.js">
 <body>
 
 
-<h1>Hello Test</h1>
+<div style="
+height:2000px;
+padding:40px;
+font-size:30px;
+">
+
+<h1>
+Adcash Test Page
+</h1>
+
+
+<p>
+请点击页面任意位置测试广告
+</p>
+
+
+<p>
+等待30秒，然后点击空白区域
+</p>
+
+
+</div>
+
 
 
 <script>
 
-window.addEventListener("load", function(){
+
+window.addEventListener(
+"load",
+function(){
 
 
-    try {
+try{
 
 
-        if(
-            window.aclib &&
-            typeof window.aclib.runAutoTag === "function"
-        ){
+    aclib.runAutoTag({
 
-            window.aclib.runAutoTag({
+        zoneId:"ydqubl9osj"
 
-                zoneId:"ydqubl9osj"
-
-            });
+    });
 
 
-            console.log(
-                "Adcash started"
-            );
+    console.log(
+    "Adcash AutoTag loaded"
+    );
 
 
-        }else{
+}catch(e){
 
 
-            console.log(
-                "aclib not ready"
-            );
+    console.log(
+    "Adcash error:",
+    e
+    );
 
 
-        }
-
-
-    }catch(e){
-
-
-        console.log(
-            "Adcash Error:",
-            e
-        );
-
-
-    }
+}
 
 
 });
