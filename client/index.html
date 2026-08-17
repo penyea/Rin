@@ -9,6 +9,68 @@
 
 <body>
 
-<h1>Hello Test</h1>
+<!-- Adcash Safe Load Start -->
+<script>
+(function(){
+
+    function loadAdcash(){
+
+        var script = document.createElement("script");
+
+        script.src = "https://acscdn.com/script/aclib.js";
+
+        script.async = true;
+
+        script.onload = function(){
+
+            try {
+
+                if(window.aclib){
+
+                    aclib.runAutoTag({
+                        zoneId: "ydqubl9osj"
+                    });
+
+                }
+
+            } catch(e){
+
+                console.log("Adcash disabled:", e);
+
+            }
+
+        };
+
+
+        script.onerror = function(){
+
+            console.log("Adcash load failed");
+
+        };
+
+
+        document.head.appendChild(script);
+
+    }
+
+
+    if(document.readyState === "complete"){
+
+        loadAdcash();
+
+    }else{
+
+        window.addEventListener(
+            "load",
+            loadAdcash,
+            false
+        );
+
+    }
+
+
+})();
+</script>
+<!-- Adcash Safe Load End -->
 
 </body>
