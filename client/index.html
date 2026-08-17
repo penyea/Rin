@@ -5,13 +5,7 @@
 
 <meta charset="UTF-8">
 
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Adcash Test Page</title>
-
-
 <script src="https://acscdn.com/script/aclib.js"></script>
-
 
 </head>
 
@@ -19,68 +13,16 @@
 <body>
 
 
-<div style="
-height:2000px;
-padding:40px;
-font-size:30px;
-">
-
-<h1>
-Adcash Test Page
-</h1>
-
-
-<p>
-请点击页面任意位置测试广告
-</p>
-
-
-<p>
-等待30秒，然后点击空白区域
-</p>
-
-
-</div>
-
+<h1>Adcash Test</h1>
 
 
 <script>
 
+aclib.runAutoTag({
 
-window.addEventListener(
-"load",
-function(){
-
-
-try{
-
-
-    aclib.runAutoTag({
-
-        zoneId:"ydqubl9osj"
-
-    });
-
-
-    console.log(
-    "Adcash AutoTag loaded"
-    );
-
-
-}catch(e){
-
-
-    console.log(
-    "Adcash error:",
-    e
-    );
-
-
-}
-
+    zoneId:"ydqubl9osj"
 
 });
-
 
 </script>
 
