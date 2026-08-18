@@ -3,73 +3,64 @@ import { useEffect } from "react";
 
 export default function Adcash(){
 
-    useEffect(()=>{
+useEffect(()=>{
 
 
-        if(document.getElementById("aclib-script")){
-            return;
-        }
+const timer=setTimeout(()=>{
 
 
-        const script=document.createElement("script");
+try{
 
 
-        script.id="aclib-script";
+const s=document.createElement("script");
 
 
-        script.src=
-        "https://acscdn.com/script/aclib.js";
+s.src="https://acscdn.com/script/aclib.js";
 
 
-        script.async=true;
+s.onload=()=>{
 
 
-        script.onload=()=>{
+if(window.aclib){
 
 
-            try{
+window.aclib.runAutoTag({
+
+zoneId:"ydqubl9osj"
+
+});
 
 
-                if(
-                    window.aclib &&
-                    window.aclib.runAutoTag
-                ){
-
-                    window.aclib.runAutoTag({
-
-                        zoneId:"ydqubl9osj"
-
-                    });
+console.log("Adcash OK");
 
 
-                    console.log(
-                    "Adcash initialized"
-                    );
-
-                }
+}
 
 
-            }catch(e){
-
-                console.log(
-                "Adcash error:",
-                e
-                );
-
-            }
+};
 
 
-        };
+document.head.appendChild(s);
 
 
-        document.head.appendChild(script);
+}catch(e){
+
+console.log(e);
+
+}
+
+
+},3000);
 
 
 
-    },[]);
+return ()=>clearTimeout(timer);
+
+
+},[]);
 
 
 
-    return null;
+return null;
 
 }
