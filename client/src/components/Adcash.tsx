@@ -1,5 +1,11 @@
 import { useEffect } from "react";
 
+declare global {
+  interface Window {
+    aclib: any;
+  }
+}
+
 
 export default function Adcash(){
 
