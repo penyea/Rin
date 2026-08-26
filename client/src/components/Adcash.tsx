@@ -1,8 +1,15 @@
 import { useEffect } from "react";
 
+declare global {
+  interface Window {
+    aclib: any;
+  }
+}
+
 export default function Adcash() {
   useEffect(() => {
     const script = document.createElement("script");
+
     script.id = "aclib";
     script.type = "text/javascript";
     script.src = "//acscdn.com/script/aclib.js";
@@ -16,6 +23,10 @@ export default function Adcash() {
     };
 
     document.body.appendChild(script);
+
+    return () => {
+      script.remove();
+    };
   }, []);
 
   return null;
