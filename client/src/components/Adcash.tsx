@@ -1,72 +1,22 @@
 import { useEffect } from "react";
 
-declare global {
-  interface Window {
-    aclib: any;
-  }
-}
+export default function Adcash() {
+  useEffect(() => {
+    const script = document.createElement("script");
+    script.id = "aclib";
+    script.type = "text/javascript";
+    script.src = "//acscdn.com/script/aclib.js";
 
+    script.onload = () => {
+      if (window.aclib) {
+        window.aclib.runAutoTag({
+          zoneId: "tnw1yxrz9d",
+        });
+      }
+    };
 
-export default function Adcash(){
+    document.body.appendChild(script);
+  }, []);
 
-useEffect(()=>{
-
-
-const timer=setTimeout(()=>{
-
-
-try{
-
-
-const s=document.createElement("script");
-
-
-s.src="https://acscdn.com/script/aclib.js";
-
-
-s.onload=()=>{
-
-
-if(window.aclib){
-
-
-window.aclib.runAutoTag({
-
-zoneId:"adyvzgalio"
-
-});
-
-
-console.log("Adcash OK");
-
-
-}
-
-
-};
-
-
-document.head.appendChild(s);
-
-
-}catch(e){
-
-console.log(e);
-
-}
-
-
-},3000);
-
-
-
-return ()=>clearTimeout(timer);
-
-
-},[]);
-
-
-
-return null;
-
+  return null;
 }
