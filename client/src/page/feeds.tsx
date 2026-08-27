@@ -5,7 +5,7 @@ import { FeedCard } from "../components/feed_card"
 import { Waiting } from "../components/loading"
 import { client } from "../app/runtime"
 import { ProfileContext } from "../state/profile"
-
+import Adsterra from "../components/Adsterra";
 import { useSiteConfig } from "../hooks/useSiteConfig";
 import { siteName } from "../utils/constants"
 import { tryInt } from "../utils/int"
@@ -100,6 +100,8 @@ export function FeedsPage() {
                         </div>
                     </div>
                     <Waiting for={status === 'idle'}>
+                         {/* Adsterra 广告 */}
+                         <Adsterra />
                         <div className={feedListClass}>
                             {currentFeedData.map(({ id, ...feed }: any) => (
                                 <FeedCard key={id} id={id} {...feed} />
