@@ -30,7 +30,6 @@ import { WritingPage } from "../page/writing";
 import { ProfileContext } from "../state/profile";
 import { tryInt } from "../utils/int";
 import { useTranslation } from "react-i18next";
-import AdSidebar from "../components/AdSidebar";
 export function AppRoutes() {
   const { t } = useTranslation();
 
@@ -163,39 +162,20 @@ function AppRoute({
         const layoutDefinition =
           getHeaderLayoutDefinition(siteConfig.headerLayout);
 
-        return layoutDefinition.renderRouteShell({
-          header: <Header>{headerComponent}</Header>,
+       return layoutDefinition.renderRouteShell({
+  header: <Header>{headerComponent}</Header>,
 
-content: (
-  <div className="flex w-full max-w-[1400px] mx-auto justify-center gap-4">
+  content: (
+    <Padding className={paddingClassName}>
+      {resolvedContent}
+    </Padding>
+  ),
 
-    <aside className="hidden xl:block w-[120px]">
-      <div className="sticky top-20">
-        <AdSidebar />
-      </div>
-    </aside>
+  footer: <Footer />,
+  paddingClassName,
+});
 
-
-    <main className="min-w-0 flex-1">
-      <Padding className={paddingClassName}>
-        {resolvedContent}
-      </Padding>
-    </main>
-
-
-    <aside className="hidden xl:block w-[120px]">
-      <div className="sticky top-20">
-        <AdSidebar />
-      </div>
-    </aside>
-
-
-  </div>
-),
-
-          footer: <Footer />,
-          paddingClassName,
-        });
+      
       }}
     </Route>
   );
