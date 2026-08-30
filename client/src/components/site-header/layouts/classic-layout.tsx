@@ -1,6 +1,7 @@
 import { BrandLink, HeaderActions, Menu, NavBar } from "..";
 import { PreviewActions, PreviewBrand, PreviewCanvas, PreviewContent, PreviewNav } from "../preview-primitives";
 import type { HeaderLayoutDefinition } from "../layout-types";
+import AdSidebar from "../../AdSidebar";
 
 const PREVIEW_ITEMS = ["Home", "Timeline", "Moments"];
 
@@ -92,7 +93,6 @@ export const classicLayoutDefinition: HeaderLayoutDefinition = {
             </div>
           </div>
 
-
           <div className="flex items-center gap-2">
             <div className="h-6 w-6 rounded-full bg-black/[0.04] dark:bg-white/[0.08]" />
             <PreviewActions themeColor={data.themeColor} />
@@ -107,13 +107,33 @@ export const classicLayoutDefinition: HeaderLayoutDefinition = {
   },
 
 
-  // 页面整体布局
-  // 注意：这里不要放广告
   renderRouteShell({ header, content, footer }) {
     return (
       <>
         {header}
-        {content}
+
+        <div className="mx-auto grid w-full max-w-[1400px] grid-cols-[160px_minmax(0,1fr)_160px] gap-6">
+
+          <aside className="hidden xl:block">
+            <div className="sticky top-20">
+              <AdSidebar />
+            </div>
+          </aside>
+
+
+          <main className="min-w-0">
+            {content}
+          </main>
+
+
+          <aside className="hidden xl:block">
+            <div className="sticky top-20">
+              <AdSidebar />
+            </div>
+          </aside>
+
+        </div>
+
         {footer}
       </>
     );
