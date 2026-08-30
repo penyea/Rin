@@ -166,27 +166,32 @@ function AppRoute({
         return layoutDefinition.renderRouteShell({
           header: <Header>{headerComponent}</Header>,
 
-          content: (
-            <div className="flex justify-center gap-4">
+content: (
+  <div className="flex w-full justify-center gap-4">
 
-              <aside className="hidden xl:block w-[120px]">
-                <div className="sticky top-20">
-                  <AdSidebar />
-                </div>
-              </aside>
+    <aside className="hidden xl:block w-[120px]">
+      <div className="sticky top-20">
+        <AdSidebar />
+      </div>
+    </aside>
 
-              <Padding className={paddingClassName}>
-                {resolvedContent}
-              </Padding>
 
-              <aside className="hidden xl:block w-[120px]">
-                <div className="sticky top-20">
-                  <AdSidebar />
-                </div>
-              </aside>
+    <main className="min-w-0 flex-1">
+      <Padding className={paddingClassName}>
+        {resolvedContent}
+      </Padding>
+    </main>
 
-            </div>
-          ),
+
+    <aside className="hidden xl:block w-[120px]">
+      <div className="sticky top-20">
+        <AdSidebar />
+      </div>
+    </aside>
+
+
+  </div>
+),
 
           footer: <Footer />,
           paddingClassName,
