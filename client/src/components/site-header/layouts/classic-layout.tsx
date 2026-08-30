@@ -63,11 +63,51 @@ export const classicLayoutDefinition: HeaderLayoutDefinition = {
       </PreviewCanvas>
     );
   },
-  renderRouteShell({ header, content, footer }) {
+renderRouteShell({ header, content, footer }) {
     return (
       <>
         {header}
-        {content}
+
+        <div className="flex w-full justify-center">
+
+          {/* 左侧广告 */}
+          <aside className="hidden xl:block w-[180px] shrink-0">
+            <div className="sticky top-20">
+              <iframe
+                src="https://lightlyenergeticevolution.com/9a8f7e7cda176cfd31394e27113dea5b/invoke.js"
+                style={{
+                  width: "160px",
+                  height: "600px",
+                  border: "0",
+                }}
+              />
+            </div>
+          </aside>
+
+
+          {/* 网站内容 */}
+          <main className="min-w-0 flex-1">
+            {content}
+          </main>
+
+
+          {/* 右侧广告 */}
+          <aside className="hidden xl:block w-[180px] shrink-0">
+            <div className="sticky top-20">
+              <iframe
+                src="https://lightlyenergeticevolution.com/9a8f7e7cda176cfd31394e27113dea5b/invoke.js"
+                style={{
+                  width: "160px",
+                  height: "600px",
+                  border: "0",
+                }}
+              />
+            </div>
+          </aside>
+
+
+        </div>
+
         {footer}
       </>
     );
