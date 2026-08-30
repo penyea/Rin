@@ -167,7 +167,7 @@ function AppRoute({
           header: <Header>{headerComponent}</Header>,
 
 content: (
-  <div className="flex w-full justify-center gap-4">
+  <div className="flex w-full max-w-[1400px] mx-auto justify-center gap-4">
 
     <aside className="hidden xl:block w-[120px]">
       <div className="sticky top-20">
