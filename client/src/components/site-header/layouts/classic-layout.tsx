@@ -3,6 +3,7 @@ import { PreviewActions, PreviewBrand, PreviewCanvas, PreviewContent, PreviewNav
 import type { HeaderLayoutDefinition } from "../layout-types";
 import AdSidebar from "../../AdSidebar";
 
+
 const PREVIEW_ITEMS = ["Home", "Timeline", "Moments"];
 
 export const classicLayoutDefinition: HeaderLayoutDefinition = {
@@ -106,36 +107,38 @@ export const classicLayoutDefinition: HeaderLayoutDefinition = {
     );
   },
 
+renderRouteShell({ header, content, footer }) {
+  return (
+    <>
+      {header}
 
-  renderRouteShell({ header, content, footer }) {
-    return (
-      <>
-        {header}
+      <div className="mx-auto flex w-full max-w-[1400px] justify-center gap-6">
 
-        <div className="mx-auto grid w-full max-w-[1400px] grid-cols-[160px_minmax(0,1fr)_160px] gap-6">
-
-          <aside className="hidden xl:block">
-            <div className="sticky top-20">
-              <AdSidebar />
-            </div>
-          </aside>
-
-
-          <main className="min-w-0">
-            {content}
-          </main>
+        {/* 左侧广告 */}
+        <aside className="hidden xl:block w-[120px]">
+          <div className="sticky top-20">
+            <AdSidebar />
+          </div>
+        </aside>
 
 
-          <aside className="hidden xl:block">
-            <div className="sticky top-20">
-              <AdSidebar />
-            </div>
-          </aside>
+        {/* 中间内容 */}
+        <main className="min-w-0 flex-1">
+          {content}
+        </main>
 
-        </div>
 
-        {footer}
-      </>
-    );
-  },
+        {/* 右侧广告 */}
+        <aside className="hidden xl:block w-[120px]">
+          <div className="sticky top-20">
+            <AdSidebar />
+          </div>
+        </aside>
+
+      </div>
+
+      {footer}
+    </>
+  );
+},
 };
