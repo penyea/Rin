@@ -132,7 +132,6 @@ export function AppRoutes() {
     </Switch>
   );
 }
-
 function AppRoute({
   path,
   children,
@@ -151,46 +150,53 @@ function AppRoute({
   const { t } = useTranslation();
 
   const content =
-    requirePermission && !profile?.permission ? <ErrorPage error={t("error.permission_denied")} /> : children;
+    requirePermission && !profile?.permission
+      ? <ErrorPage error={t("error.permission_denied")} />
+      : children;
 
   return (
     <Route path={path}>
       {(params) => {
-        const resolvedContent = typeof content === "function" ? content(params) : content;
-        const layoutDefinition = getHeaderLayoutDefinition(siteConfig.headerLayout);
+        const resolvedContent =
+          typeof content === "function" ? content(params) : content;
 
-return layoutDefinition.renderRouteShell({
-  header: <Header>{headerComponent}</Header>,
+        const layoutDefinition =
+          getHeaderLayoutDefinition(siteConfig.headerLayout);
 
-  content: (
-    <div className="flex justify-center gap-4">
+        return layoutDefinition.renderRouteShell({
+          header: <Header>{headerComponent}</Header>,
 
-      <aside className="hidden xl:block w-[120px]">
-        <div className="sticky top-20">
-          <AdSidebar />
-        </div>
-      </aside>
+          content: (
+            <div className="flex justify-center gap-4">
 
-      <Padding className={paddingClassName}>
-        {resolvedContent}
-      </Padding>
+              <aside className="hidden xl:block w-[120px]">
+                <div className="sticky top-20">
+                  <AdSidebar />
+                </div>
+              </aside>
 
-      <aside className="hidden xl:block w-[120px]">
-        <div className="sticky top-20">
-          <AdSidebar />
-        </div>
-      </aside>
+              <Padding className={paddingClassName}>
+                {resolvedContent}
+              </Padding>
 
-    </div>
-  ),
+              <aside className="hidden xl:block w-[120px]">
+                <div className="sticky top-20">
+                  <AdSidebar />
+                </div>
+              </aside>
 
-  footer: <Footer />,
-  paddingClassName,
-});
+            </div>
+          ),
+
+          footer: <Footer />,
+          paddingClassName,
+        });
+      }}
     </Route>
   );
 }
 
+     
 function AdminRoute({
   path,
   children,
