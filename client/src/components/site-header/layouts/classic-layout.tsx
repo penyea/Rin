@@ -114,3 +114,4 @@ renderRouteShell({ header, content, footer }) {
     </>
   );
 },
+};
