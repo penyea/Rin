@@ -71,7 +71,7 @@ renderRouteShell({ header, content, footer }) {
 
         <div className="flex justify-center">
 
-          <aside className="hidden xl:block w-[180px]">
+          <aside className="hidden xl:block w-[120px]">
             <div className="sticky top-20">
               <AdSidebar />
             </div>
@@ -83,7 +83,7 @@ renderRouteShell({ header, content, footer }) {
           </main>
 
 
-          <aside className="hidden xl:block w-[180px]">
+          <aside className="hidden xl:block w-[120px]">
             <div className="sticky top-20">
               <AdSidebar />
             </div>
