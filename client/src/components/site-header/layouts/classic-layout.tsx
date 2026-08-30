@@ -1,8 +1,6 @@
 import { BrandLink, HeaderActions, Menu, NavBar } from "..";
 import { PreviewActions, PreviewBrand, PreviewCanvas, PreviewContent, PreviewNav } from "../preview-primitives";
 import type { HeaderLayoutDefinition } from "../layout-types";
-import AdSidebar from "../../AdSidebar";
-
 
 const PREVIEW_ITEMS = ["Home", "Timeline", "Moments"];
 
@@ -111,34 +109,8 @@ renderRouteShell({ header, content, footer }) {
   return (
     <>
       {header}
-
-      <div className="mx-auto flex w-full max-w-[1400px] justify-center gap-6">
-
-        {/* 左侧广告 */}
-        <aside className="hidden xl:block w-[120px]">
-          <div className="sticky top-20">
-            <AdSidebar />
-          </div>
-        </aside>
-
-
-        {/* 中间内容 */}
-        <main className="min-w-0 flex-1">
-          {content}
-        </main>
-
-
-        {/* 右侧广告 */}
-        <aside className="hidden xl:block w-[120px]">
-          <div className="sticky top-20">
-            <AdSidebar />
-          </div>
-        </aside>
-
-      </div>
-
+      {content}
       {footer}
     </>
   );
 },
-};
