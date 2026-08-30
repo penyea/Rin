@@ -159,35 +159,34 @@ function AppRoute({
         const resolvedContent = typeof content === "function" ? content(params) : content;
         const layoutDefinition = getHeaderLayoutDefinition(siteConfig.headerLayout);
 
-        return layoutDefinition.renderRouteShell({
-          header: <Header>{headerComponent}</Header>,
-          content: content: (
-  <div className="flex justify-center gap-4">
+return layoutDefinition.renderRouteShell({
+  header: <Header>{headerComponent}</Header>,
 
-    <aside className="hidden xl:block w-[120px]">
-      <div className="sticky top-20">
-        <AdSidebar />
-      </div>
-    </aside>
+  content: (
+    <div className="flex justify-center gap-4">
 
+      <aside className="hidden xl:block w-[120px]">
+        <div className="sticky top-20">
+          <AdSidebar />
+        </div>
+      </aside>
 
-    <Padding className={paddingClassName}>
-      {resolvedContent}
-    </Padding>
+      <Padding className={paddingClassName}>
+        {resolvedContent}
+      </Padding>
 
+      <aside className="hidden xl:block w-[120px]">
+        <div className="sticky top-20">
+          <AdSidebar />
+        </div>
+      </aside>
 
-    <aside className="hidden xl:block w-[120px]">
-      <div className="sticky top-20">
-        <AdSidebar />
-      </div>
-    </aside>
+    </div>
+  ),
 
-  </div>
-),
-          footer: <Footer />,
-          paddingClassName,
-        });
-      }}
+  footer: <Footer />,
+  paddingClassName,
+});
     </Route>
   );
 }
