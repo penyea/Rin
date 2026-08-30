@@ -2,7 +2,6 @@ import { BrandLink, HeaderActions, Menu, NavBar } from "..";
 import { PreviewActions, PreviewBrand, PreviewCanvas, PreviewContent, PreviewNav } from "../preview-primitives";
 import type { HeaderLayoutDefinition } from "../layout-types";
 import AdSidebar from "../../AdSidebar";
-import AdSidebar from "../../AdSidebar";
 
 const PREVIEW_ITEMS = ["Home", "Timeline", "Moments"];
 
